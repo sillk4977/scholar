@@ -1,0 +1,14 @@
+<md-card>
+  <div>
+    <span *ngFor="let c of compositions; let i = index">
+      <span *ngIf="i > 0">-</span><composition-input [(ngModel)]="compositions[i]"></composition-input>
+    </span>
+    &nbsp;
+    <span>
+      <i class="fa fa-plus" (click)="append()"></i>
+    </span>
+  </div>
+  <div style="text-align: right">
+    <button md-raised-button (click)="save()">SAVE</button>
+  </div>
+</md-card>

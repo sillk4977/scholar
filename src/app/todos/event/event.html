@@ -1,0 +1,63 @@
+<md-card *ngIf="todosevent">
+  <md-grid-list cols="12" *ngIf="!edit" rowHeight="2.3em">
+    <md-grid-tile colspan="8">
+      <span (click)="switchMode()" style="width: 100%; cursor: pointer">
+        {{ todosevent.name }}<span style="padding-left: 8px; font-size: 0.7em">{{ checkedCount }}/{{ erranCount }}</span>
+      </span>
+    </md-grid-tile>
+    <md-grid-tile colspan="2">
+      <button md-button (click)="switchEdit()" *ngIf="expand && !edit">
+        编辑
+      </button>
+    </md-grid-tile>
+    <md-grid-tile colspan="2">
+      <button md-button color="warn" (click)="delete()" *ngIf="expand && !edit">
+        {{ deleteText }}
+      </button>
+    </md-grid-tile>
+  </md-grid-list>
+
+  <md-grid-list cols="12" *ngIf="edit" rowHeight="2.3em">
+    <md-grid-tile colspan="10">
+      <span style="width: 100%">
+        <md-input-container style="width: 100%">
+          <input mdInput type="text" placeholder="事件" [(ngModel)]="todosevent.name" (keyup)="enterSaveEvent($event)">
+        </md-input-container>
+      </span>
+    </md-grid-tile>
+    <md-grid-tile colspan="2">
+      <button md-button (click)="saveEvent()">
+        完成
+      </button>
+    </md-grid-tile>
+  </md-grid-list>
+
+  <md-grid-list cols="12" *ngIf="expand" rowHeight="2.3em">
+    <md-grid-tile colspan="8">
+      <span style="width: 100%">
+        <md-input-container style="width: 100%">
+          <input mdInput type="text" placeholder="事项内容" [(ngModel)]="input.content" (keyup)="enterSaveErran($event)">
+        </md-input-container>
+      </span>
+    </md-grid-tile>
+    <md-grid-tile colspan="4">
+      <span style="width: 100%">
+        <button md-button color="primary" (click)="newErran()">添加事项</button>
+      </span>
+    </md-grid-tile>
+  </md-grid-list>
+  <ng-container *ngIf="expand">
+  <md-grid-list cols="12" *ngFor="let erran of todosevent.errans; let i = index" rowHeight="2.3em">
+    <md-grid-tile colspan="10">
+      <span style="width: 100%">
+        <md-checkbox [(ngModel)]='erran.checked' [class.crossed]='erran.checked' (ngModelChange)='save()'>
+          {{ erran.content }}
+        </md-checkbox>
+      </span>
+    </md-grid-tile>
+    <md-grid-tile colspan="2">
+      <button md-button color="warn" (click)="deleteErran(i)">删除</button>
+    </md-grid-tile>
+  </md-grid-list>
+  </ng-container>
+</md-card>

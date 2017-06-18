@@ -1,0 +1,17 @@
+<span *ngIf="input">
+  <div *ngIf="edit" style="display: inline-block">
+    <div (keyup)="enter($event)">
+      <div style="width: 3em; display: inline-block">
+        <md-input-container>
+          <input mdInput type="number" placeholder="摩尔量" [(ngModel)]="input.mol">
+        </md-input-container>
+      </div>
+      <md-input-container>
+        <input mdInput type="text" placeholder="化学式" [(ngModel)]="input.formular">
+      </md-input-container>
+    </div>
+  </div>
+  <span *ngIf="!edit" style="cursor: pointer" (click)="switchMode()">
+    {{ input.mol + input.formular }}
+  </span>
+</span>

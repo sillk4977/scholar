@@ -1,0 +1,6 @@
+<md-card>
+  <button md-raised-button color="accent" (click)="newEvent()">添加事件</button>
+  <ng-container *ngFor="let e of events; let i = index;">
+    <todos-event [todosevent]='events[i]' (deleteTodo)="deleteEvent(i)"></todos-event>
+  </ng-container>
+</md-card>
