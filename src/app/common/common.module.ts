@@ -7,6 +7,7 @@ import { MaterialModule } from '@angular/material';
 import { AbNavTop } from './nav';
 import { InputSuffix } from './directives';
 import { LocalStorage } from './localstorage/localstorage.service';
+import { ConfirmBtn } from './confirmBtn/confirmBtn';
 
 @NgModule({
     imports: [
@@ -17,6 +18,7 @@ import { LocalStorage } from './localstorage/localstorage.service';
     declarations: [
         AbNavTop,
         InputSuffix,
+        ConfirmBtn,
     ],
     providers: [
         LocalStorage,
@@ -26,6 +28,7 @@ import { LocalStorage } from './localstorage/localstorage.service';
         MaterialModule,
         AbNavTop,
         InputSuffix,
+        ConfirmBtn,
     ]
 })
 export class CustomCommonModule {

@@ -11,9 +11,7 @@
       </button>
     </md-grid-tile>
     <md-grid-tile colspan="2">
-      <button md-button color="warn" (click)="delete()" *ngIf="expand && !edit">
-        {{ deleteText }}
-      </button>
+      <confirm-btn [confirmArray]="['删除', '确定？']" (confirmed)="delete()" *ngIf="expand && !edit"></confirm-btn>
     </md-grid-tile>
   </md-grid-list>
 

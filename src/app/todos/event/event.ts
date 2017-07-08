@@ -19,7 +19,6 @@ export class TodosEvent implements OnInit {
 
     expand: boolean = false;
     edit: boolean = false;
-    deleteConfirm: number = 0;
 
     constructor (
         private ls: LocalStorage,
@@ -75,19 +74,7 @@ export class TodosEvent implements OnInit {
         }
     }
 
-    get deleteText() {
-        if (this.deleteConfirm > 0) {
-            return '确定要删除?';
-        }
-        return '删除';
-    }
-
     delete() {
-        if (this.deleteConfirm < 1) {
-            this.deleteConfirm++;
-            return;
-        }
         this.deleteTodo.emit();
-        this.deleteConfirm = 0;
     }
 }
